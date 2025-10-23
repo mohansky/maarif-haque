@@ -1,0 +1,169 @@
+---
+// src/pages/blog/[...slug].astro
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+// import Container from '../../components/ui/Container.astro';
+// import Badge from '../../components/ui/Badge.astro';
+import Heading from '../../components/Heading.astro';
+import { getCollection, getEntry, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projectEntries = await getCollection('projects');
+  return projectEntries.map(entry => ({
+    params: { slug: entry.id }, 
+    props: { entry },
+  }));
+}
+
+const { entry: propsEntry } = Astro.props;
+const entry = await getEntry("projects", propsEntry.id);
+if (!entry) {
+  throw new Error("Could not find blog post with id: " + propsEntry.id);
+}
+const { Content } = await render(entry);
+
+---
+
+<Layout>
+  <article class="my-20">
+    <!-- {entry.data.image && (
+      <div class="w-full h-64 md:h-96 overflow-hidden">
+        <Image 
+          src={entry.data.image} 
+          alt={entry.data.title}
+          width={1200}
+          height={400}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    )} -->
+    
+    <!-- <Container class="py-8"> -->
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-4">
+            <!-- <Badge variant="outline">
+              {new Date(entry.data.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </Badge> -->
+            <!-- {!entry.data.published && (
+              <Badge variant="outline">Draft</Badge>
+            )} -->
+          </div>
+          <Heading as="h1" class="mb-4">{entry.data.title}</Heading>
+          <p class="text-xl text-gray-600 mb-6">{entry.data.description}</p>
+        </div>
+        
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+        
+        <div class="mt-12 pt-8 border-t">
+          <a 
+            href="/" 
+            class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+          >
+            ← Back to Home
+          </a>
+        </div>
+      </div>
+    <!-- </Container> -->
+  </article>
+</Layout>
+
+<style>
+  .prose {
+    color: #374151;
+  }
+  
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    color: #111827;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  
+  .prose h1 {
+    font-size: 2.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h2 {
+    font-size: 1.875rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+  
+  .prose ul,
+  .prose ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.75rem;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose code {
+    background-color: #f3f4f6;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .prose pre {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+  
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+  }
+  
+  .prose blockquote {
+    border-left: 4px solid #d1d5db;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #6b7280;
+  }
+  
+  .prose a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  
+  .prose a:hover {
+    color: #1d4ed8;
+  }
+  
+  .prose strong {
+    font-weight: 600;
+    color: #111827;
+  }
+</style>

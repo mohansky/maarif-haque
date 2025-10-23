@@ -1,0 +1,180 @@
+site:
+  title: Astro MK Starter
+  description: A modern, fast, and SEO-friendly blog built with Astro and DaisyUI
+  keywords: 
+    - astro
+    - blog
+    - typescript
+    - tailwind
+    - daisyui
+    - markdown
+    - seo
+  author: MK
+  website: https://mohankumar.dev
+  email: contact@example.com
+  
+  url: https://your-domain.com
+  baseUrl: /
+  
+  # Branding
+  logo: /logo.svg
+  favicon: /favicon.ico
+  
+  # SEO & Meta
+  ogImage: /og-image.jpg
+  twitterCard: summary_large_image
+  twitterSite: yourusername
+  
+  # Copyright
+  copyright: © 2024 Astro MK Starter. All rights reserved.
+  copyrightStartYear: 2024
+  
+  # Contact Information
+  contact:
+    email:
+      - hello@company.com
+      - support@company.com
+    phone:
+      - "+1 (555) 123-4567"
+      - "+1 (555) 987-6543"
+    address:
+      - "123 Business Street"
+      - "Suite 100, City, ST 12345"
+    businessHours:
+      - days: "Monday - Friday"
+        time: "9:00 AM - 6:00 PM"
+      - days: "Saturday"
+        time: "10:00 AM - 4:00 PM"
+      - days: "Sunday"
+        time: "Closed"
+  
+  # Main Navigation Links
+  navigationMain:
+    - label: Home
+      href: /
+      icon: M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6
+      description: Homepage
+      
+    - label: About
+      href: /about
+      icon: M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z
+      description: Learn more about us
+
+    - label: Blog
+      href: /blog
+      icon: M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z
+      description: Latest blog posts and articles
+      
+    - label: Contact
+      href: /#contact
+      icon: M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z
+      description: Get in touch
+  
+  # Footer Navigation
+  navigationFooter:
+    - title: Company
+      links:
+        - label: About
+          href: /about
+        - label: Team
+          href: /team
+        - label: Careers
+          href: /careers
+        - label: Contact
+          href: /#contact
+          
+    - title: Resources
+      links:
+        - label: Blog
+          href: /blog
+        - label: Documentation
+          href: /docs
+        - label: Help Center
+          href: /help
+        - label: Privacy Policy
+          href: /privacy
+          
+    - title: Connect
+      links:
+        - label: Newsletter
+          href: /newsletter
+        - label: Community
+          href: /community
+        - label: Support
+          href: /support
+        - label: Terms of Service
+          href: /terms
+  
+  # Social Media
+  socialTwitterUrl: https://twitter.com/yourusername
+  socialTwitterUsername: yourusername
+  socialGithubUrl: https://github.com/yourusername
+  socialGithubUsername: yourusername
+  socialLinkedinUrl: https://linkedin.com/in/yourprofile
+  socialLinkedinUsername: yourprofile
+  socialYoutubeUrl: https://youtube.com/@yourchannel
+  socialYoutubeUsername: yourchannel
+  socialDiscordUrl: https://discord.gg/yourinvite
+  socialDiscordServerId: yourinvite
+  socialEmailAddress: mail@mohankumar.dev
+  socialEmailSubject: Hello from your website
+  
+  # Call to Actions
+  ctaPrimaryLabel: Get Started
+  ctaPrimaryHref: /get-started
+  ctaPrimaryVariant: primary
+  ctaSecondaryLabel: Learn More
+  ctaSecondaryHref: /about
+  ctaSecondaryVariant: outline
+  ctaNewsletterLabel: Subscribe
+  ctaNewsletterHref: /newsletter
+  ctaNewsletterVariant: secondary
+  
+  # Features & Settings
+  featureDarkMode: true
+  featureSearch: true
+  featureComments: true
+  featureAnalytics: true
+  featureNewsletter: true
+  featureRss: true
+  featureSitemap: true
+  
+  # Analytics & Tracking
+  analyticsGoogleAnalytics: GA_MEASUREMENT_ID
+  analyticsGoogleTagManager: GTM_CONTAINER_ID
+  analyticsPlausible: your-domain.com
+  analyticsFathom: SITE_ID
+  
+  # Newsletter
+  newsletterProvider: convertkit
+  newsletterApiKey: YOUR_API_KEY
+  newsletterFormId: YOUR_FORM_ID
+  newsletterDescription: Get the latest updates and insights delivered to your inbox.
+  
+  # Blog Settings
+  blogPostsPerPage: 10
+  blogShowReadingTime: true
+  blogShowTableOfContents: true
+  blogShowRelatedPosts: true
+  blogEnableComments: true
+  
+  # Comments
+  commentsProvider: giscus
+  commentsRepo: username/repo
+  commentsRepoId: R_YOUR_REPO_ID
+  commentsCategory: General
+  commentsCategoryId: DIC_YOUR_CATEGORY_ID
+  
+  # Performance & PWA
+  performancePreloadImages: true
+  performanceLazyLoadImages: true
+  performanceMinifyCSS: true
+  performanceMinifyJS: true
+  
+  # PWA Settings
+  pwaEnabled: true
+  pwaName: Astro MK Starter
+  pwaShortName: AstroMK
+  pwaDescription: A modern blog built with Astro
+  pwaThemeColor: '#000000'
+  pwaBackgroundColor: '#ffffff'

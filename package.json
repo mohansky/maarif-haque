@@ -1,0 +1,21 @@
+{
+  "name": "maarif",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.7",
+    "@astrojs/netlify": "^6.5.13",
+    "@tailwindcss/vite": "^4.1.15",
+    "astro": "^5.14.8",
+    "tailwindcss": "^4.1.15"
+  },
+  "devDependencies": {
+    "daisyui": "^5.3.7"
+  }
+}
