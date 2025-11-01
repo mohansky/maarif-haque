@@ -1,6 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import Heading from "../components/Heading.astro"; 
+import { getCollection, type CollectionEntry } from "astro:content"; 
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import Intro from "../components/Intro.astro";
@@ -10,12 +9,12 @@ const publishedProjects = allProjects
   .filter((project: CollectionEntry<"projects">) => project.data.published)
   .sort(
     (a: CollectionEntry<"projects">, b: CollectionEntry<"projects">) =>
-      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+      a.data.weight - b.data.weight
   );
 ---
 
 <Layout>
-  <main class="w-3xl my-20 mx-auto flex flex-col items-center"> 
+  <main class="my-32"> 
     <Intro/>
     <div class="grid md:grid-cols-2 gap-8">
       {publishedProjects.map((project) => <ProjectCard project={project} />)}
