@@ -1,0 +1,30 @@
+---
+interface Props {
+  variant?: "transparent" | "muted";
+  eyebrow?: string;
+  title?: string;
+}
+
+const { variant = "transparent", eyebrow, title } = Astro.props;
+---
+
+<section class={`px-2 lg:px-0 ${variant === "muted" ? "bg-base-300" : "bg-transparent"}`}>
+  <div class={`w-full lg:max-w-6xl mx-auto py-32`}>
+    {
+      eyebrow && (
+        <>
+          <p class="text-sm font-bold italic text-muted-foreground mb-3">
+            {eyebrow}
+          </p>
+          <div class=" w-5 h-1 mb-2 bg-base-content" />
+        </>
+      )
+    }
+
+    {title && <h2 class="text-4xl font-light mb-8">{title}</h2>}
+
+    <div class="prose prose-neutral dark:prose-invert max-w-none">
+      <slot />
+    </div>
+  </div>
+</section>

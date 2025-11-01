@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-   themes: mhlight --default, mhdark --prefersdark;
- }
+  themes: mhlight --default, mhdark --prefersdark;
+}
 
 @plugin "daisyui/theme" {
   name: "mhlight";
@@ -55,7 +55,7 @@
   --color-accent-content: oklch(38% 0.063 188.416);
   --color-neutral: oklch(14% 0.005 285.823);
   --color-neutral-content: oklch(92% 0.004 286.32);
-  --color-info: oklch(74% 0.16 232.661);
+  --color-info: oklch(0.5401 0.208 275.09);
   --color-info-content: oklch(29% 0.066 243.157);
   --color-success: oklch(76% 0.177 163.223);
   --color-success-content: oklch(37% 0.077 168.94);
@@ -76,16 +76,36 @@
 /* inter-regular - latin */
 @font-face {
   font-display: swap;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/inter-v20-latin-regular.woff2') format('woff2');
+  src: url("../fonts/inter-v20-latin-regular.woff2") format("woff2");
+}
+
+/* open-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/open-sans-v44-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* brawler-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Brawler';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/brawler-v20-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-openSans: "Open Sans";
+  --font-brawler: "Brawler";
 }
 
-html{
-  font-family: font-sans;
+html {
+  font-family: font-openSans;
 }

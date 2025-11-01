@@ -1,0 +1,22 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  subtitle: string;
+}
+
+const { icon, title, subtitle } = Astro.props;
+---
+
+<div class="relative px-5 py-6 rounded-md bg-base-200">
+  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-purple-400 w-14 h-14 rounded-full flex items-center justify-center">
+    <span class="text-2xl">
+      {icon}
+    </span>
+  </div>
+  <h6 class="pt-5 font-bold">{title}</h6>
+  <p class="text-info mb-3">{subtitle}</p>
+  <p class="text-muted">
+    <slot />
+  </p>
+</div>

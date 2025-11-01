@@ -1,22 +1,75 @@
 ---
 import ThemeController from "./ThemeController.astro";
-
-
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between">
+<!-- <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between">
   <div
-    class="navbar w-6xl mx-auto px-20 bg-base-300/90 backdrop-blur-3xl mt-5 rounded-lg"
+    class="navbar w-6xl mx-auto px-20 bg-base-100/10 backdrop-blur-md mt-5 rounded-lg font-openSans text-xl font-bold"
   >
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl" href="/">Maarif Haque</a>
+      <a class="link link-hover" href="/">Maarif Haque</a>
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal items-center rounded-box">
-        <li><a href="/about">About</a></li>
+        <li><a href="/about">About me</a></li>
         <li><a href="/cv">CV</a></li>
       </ul>
       <ThemeController />
     </div>
   </div>
-</nav>
+</nav> -->
+
+<div class="drawer">
+  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col">
+    <!-- Navbar -->
+     <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between">
+    <div class="navbar w-6xl mx-auto px-3 lg:px-20 bg-base-100/10 backdrop-blur-md mt-5 rounded-lg font-openSans text-xl font-bold">
+      <div class="mx-2 flex-1 px-2"><a class="link link-hover" href="/">Maarif Haque</a></div>
+      <div class="flex-none lg:hidden mr-3">
+        <label
+          for="my-drawer-2"
+          aria-label="open sidebar"
+          class="btn btn-square btn-ghost"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-6 w-6 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </label>
+      </div>
+      <div class="hidden flex-none lg:block">
+        <ul class="menu menu-horizontal">
+          <ul class="menu menu-horizontal items-center rounded-box">
+            <li><a href="/about">About me</a></li>
+            <li><a href="/cv">CV</a></li>
+          </ul>
+        </ul>
+      </div>
+      <ThemeController />
+    </div>
+    </nav>
+    <!-- Page content here -->
+    <!-- Content -->
+  </div>
+  <div class="drawer-side z-50">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <div class="flex flex-col items-center bg-base-100 py-20 my-2 w-full h-content">
+
+      <ul class="menu menu-vertical items-center gap-10 justify-center rounded-box ">
+        <li><a href="/about">About me</a></li>
+        <li><a href="/cv">CV</a></li>
+        <!-- <ThemeController /> -->
+      </ul>
+    </div>
+  </div>
+</div>
