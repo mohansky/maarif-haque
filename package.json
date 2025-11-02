@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.7",
     "@astrojs/netlify": "^6.5.13",
+    "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.15",
     "astro": "^5.14.8",
     "tailwind-merge": "^3.3.1",
