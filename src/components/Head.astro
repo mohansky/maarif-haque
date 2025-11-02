@@ -1,26 +1,42 @@
 ---
+import { ClientRouter, fade, slide } from 'astro:transitions';
+
 interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
-  type?: string;
+  meta?: {
+    title?: string;
+    jobtitle?: string;
+    description?: string;
+    image?: string | URL;
+    type?: string;
+    socialLinkedinUrl?: string;
+    socialEmailAddress?: string;
+  };
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "http://localhost:4321");
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site ?? "http://localhost:4321"
+);
 
 const {
-  title = "Maarif Ahmed - UI/UX Designer",
-  description = "UI/UX Designer specializing in user-centered design and digital experiences",
-  image = "/og-image.jpg",
-  type = "website"
-} = Astro.props;
+  title,
+  jobtitle,
+  description = "Product/Experience designer, strategist. Specializing in designing 1-10 products focusing on MVP, growth, scalability, and continuous refinement through active user testing.",
+  image,
+  type = "website",
+  socialLinkedinUrl,
+  socialEmailAddress
+} = Astro.props.meta || {};
+
+const imageUrl = image || "/og-image.jpg";
 ---
 
 <!-- Primary Meta Tags -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
-<title>{title}</title>
+<link rel="sitemap" href="/sitemap-index.xml" />
+<title>{title} | {jobtitle}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
@@ -30,27 +46,32 @@ const {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<!-- <meta property="og:image" content="/og-image.jpg" /> -->
+<meta property="og:image" content={new URL(imageUrl, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- <meta property="twitter:image" content="/og-image.jpg" /> -->
+<meta property="twitter:image" content={new URL(imageUrl, Astro.url)} />
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+<ClientRouter />
+
 <!-- JSON-LD Schema -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Maarif Ahmed",
-  "jobTitle": "UI/UX Designer",
-  "description": description,
-  "url": Astro.site,
-  "sameAs": [
-    "https://linkedin.com/in/yourprofile"
-  ]
-})} />
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: title,
+    jobTitle: jobtitle,
+    description: description,
+    url: Astro.site,
+    sameAs: [socialLinkedinUrl, socialEmailAddress].filter(Boolean),
+  })}
+/>

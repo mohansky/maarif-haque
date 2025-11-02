@@ -17,6 +17,7 @@ const { project } = Astro.props;
           <Image
             src={project.data.icon}
             alt={project.data.iconTitle || project.data.title}
+            title={project.data.iconTitle || project.data.title}
             width={61}
             height={61}
             class="w-18 rounded-lg"
@@ -27,7 +28,7 @@ const { project } = Astro.props;
     }
   </figure>
   <div class="card-body">
-     <a href={`/${project.id}`}> 
+     <a href={`/${project.id}`} title={project.data.title}>
       <h2 class="card-title link link-hover">
         {project.data.title}
         <!-- <div class="badge badge-secondary">NEW</div> -->

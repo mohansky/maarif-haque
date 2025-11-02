@@ -1,5 +1,8 @@
 ---
+import { getEntry } from "astro:content";
 
+const siteMeta = await getEntry("config", "site");
+const footer = siteMeta?.data
 ---
 
 <footer
@@ -10,13 +13,14 @@
   >
     <ul class="flex gap-4">
       <li class="link link-hover">
-        <a href="mailto:reachmaarif@gmail.com">reachmaarif@gmail.com</a>
-      </li>
+        <a href={`mailto:${footer?.email}`} title={`Email ${footer?.email}`}>
+          {footer?.email}</a>
+      </li></a>
       <li class="w-1 h-1 my-auto bg-base-content"></li>
       <li class="link link-hover">
-        <a href="https://www.linkedin.com/">Linkedin</a>
+        <a href={footer?.linkedinUrl} title={`Linkedin ${footer?.linkedinUrl}`}>Linkedin</a>
       </li>
     </ul>
-    <h1>© S Maarif Haque {new Date().getFullYear()}</h1>
+    <p>© {footer?.author} {new Date().getFullYear()}</p>
   </div>
 </footer>

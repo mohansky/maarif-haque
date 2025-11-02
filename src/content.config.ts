@@ -23,18 +23,19 @@ const config = defineCollection({
   loader: file("src/content/config/index.yml"),
   schema: ({ image }) =>
     z.object({
-        title: z.string(),
-        description: z.string(),
-        author: z.string(),
-        email: z.string(),
-        navigationMain: z.array(
-          z.object({
-            label: z.string(),
-            href: z.string(),
-          })
-        ),
-        socialLinkedinUrl: z.string().optional(),
-        socialEmailAddress: z.string().optional(),
+      title: z.string(),
+      jobtitle: z.string(),
+      description: z.string(),
+      image: image().optional(),
+      author: z.string(),
+      email: z.string(),
+      linkedinUrl: z.string().optional(),
+      navigationMain: z.array(
+        z.object({
+          label: z.string(),
+          href: z.string(),
+        })
+      ),
     }),
 });
 

@@ -1,17 +1,14 @@
 site:
-  title: Maarif Haque - UI/UX Designer
-  description: UI/UX Designer specializing in user-centered design and digital experiences
-  author: Maarif Haque
+  title: Maarif Haque
+  jobtitle: Product/Experience designer, strategist
+  description: Product/Experience designer, strategist. Specializing in designing 1-10 products focusing on MVP, growth, scalability, and continuous refinement through active user testing.
+  image: ../og-image.jpg  
+  author: S Maarif Haque
   email: reachmaarif@gmail.com
+  linkedinUrl: https://linkedin.com/in/@maarifhaque
 
   navigationMain:
-    - label: Work
-      href: /
     - label: About
       href: /about
     - label: CV
       href: /cv
-
-  socialLinkedinUrl: https://linkedin.com/in/@maarifhaque
-  socialEmailAddress: reachmaarif@gmail.com
-  
