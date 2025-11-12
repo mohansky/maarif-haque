@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { twMerge } from 'tailwind-merge';
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  quality?: number;
+  format?: 'avif' | 'webp' | 'png' | 'jpg';
+}
+
+const {
+  src,
+  alt,
+  width = 1920,
+  height,
+  class: className,
+  quality,
+  format,
+} = Astro.props;
+
+// Build props object, only including defined values
+const imageProps: any = {
+  src,
+  alt,
+  width,
+};
+
+if (height !== undefined) imageProps.height = height;
+if (className !== undefined) imageProps.class = twMerge('w-full h-auto', className);
+if (quality !== undefined) imageProps.quality = quality;
+if (format !== undefined) imageProps.format = format;
+---
+
+<Image {...imageProps} />
