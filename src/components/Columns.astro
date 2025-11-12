@@ -1,17 +1,39 @@
 ---
+import { twMerge } from "tailwind-merge";
+
 interface Props {
-  columns?: 2 | 3 | 4;
+  columns?: 2 | 3 | 4 | 5;
+  class?: string;
+  borderDot?: boolean;
+  dotTitle?: string;
+  dotOnly?: boolean;
 }
 
-const { columns = 2 } = Astro.props;
+const { columns = 2, class: className, borderDot = false, dotTitle, dotOnly = false } = Astro.props;
 
 const gridClasses = {
-  2: 'md:grid-cols-2',
-  3: 'md:grid-cols-3',
-  4: 'md:grid-cols-4',
+  2: "md:grid-cols-2",
+  3: "md:grid-cols-3",
+  4: "md:grid-cols-4",
+  5: "md:grid-cols-5",
 };
+
+// Base styles for dot
+const dotStyles = "[&>*:first-child]:pl-6 [&>*:first-child]:pt-4 [&>*:first-child]:relative [&>*:first-child]:before:content-[''] [&>*:first-child]:before:absolute [&>*:first-child]:before:-left-2 [&>*:first-child]:before:top-0 [&>*:first-child]:before:w-4 [&>*:first-child]:before:h-4 [&>*:first-child]:before:bg-secondary [&>*:first-child]:before:rounded-full";
+
+// Border line styles (only if not dotOnly)
+const borderStyles = "[&>*:first-child]:after:content-[''] [&>*:first-child]:after:absolute [&>*:first-child]:after:-left-px [&>*:first-child]:after:top-6 [&>*:first-child]:after:bottom-2 [&>*:first-child]:after:w-0.5 [&>*:first-child]:after:bg-secondary";
+
+const appliedStyles = borderDot ? (dotOnly ? dotStyles : `${dotStyles} ${borderStyles}`) : '';
 ---
 
-<div class={`grid grid-cols-1 ${gridClasses[columns]} gap-6`}>
-  <slot />
+<div class="relative">
+  {borderDot && dotTitle && (
+    <span class="absolute left-5 top-0 -translate-y-1 text-xl text-base-content whitespace-nowrap z-10">
+      {dotTitle}
+    </span>
+  )}
+  <div class={`grid grid-cols-1 ${gridClasses[columns]} gap-6 ${appliedStyles} ${className}`}>
+    <slot />
+  </div>
 </div>
