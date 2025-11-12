@@ -26,25 +26,38 @@
 </label>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  const initializeTheme = () => {
     const toggle = document.getElementById('theme-toggle') as HTMLInputElement;
     const html = document.documentElement;
 
-    // Initialize theme from localStorage or system preference
+    // Get current theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const theme = savedTheme || (prefersDark ? 'mhdark' : 'mhlight');
 
+    // Set theme attribute and toggle state
     html.setAttribute('data-theme', theme);
     if (toggle) {
       toggle.checked = theme === 'mhdark';
     }
 
-    // Toggle theme on checkbox change
-    toggle?.addEventListener('change', (e) => {
-      const theme = (e.target as HTMLInputElement).checked ? 'mhdark' : 'mhlight';
-      html.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    });
-  });
+    // Remove old event listeners to prevent duplicates
+    const newToggle = toggle?.cloneNode(true) as HTMLInputElement;
+    if (toggle && newToggle) {
+      toggle.parentNode?.replaceChild(newToggle, toggle);
+
+      // Add event listener for theme changes
+      newToggle.addEventListener('change', (e) => {
+        const newTheme = (e.target as HTMLInputElement).checked ? 'mhdark' : 'mhlight';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    }
+  };
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initializeTheme);
+
+  // Re-initialize after view transitions
+  document.addEventListener('astro:after-swap', initializeTheme);
 </script>
